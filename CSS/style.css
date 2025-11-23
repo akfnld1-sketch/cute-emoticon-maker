@@ -1,0 +1,358 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  background: radial-gradient(circle at top, #020617 0, #000 60%);
+  color: #e5e7eb;
+}
+
+.page-root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 12px 48px;
+}
+
+/* --------------------------
+   상단 사용설명서 아코디언
+--------------------------- */
+.manual-wrapper {
+  max-width: 1080px;
+  margin: 8px auto 8px;
+  padding: 0 4px;
+}
+
+.manual-box {
+  background: #020617;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  overflow: hidden;
+  cursor: default;
+}
+
+.manual-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e5e7eb;
+  background: linear-gradient(to right, #111827, #020617);
+}
+
+.manual-arrow {
+  font-size: 11px;
+  opacity: 0.75;
+  transition: transform 0.25s ease;
+}
+
+.manual-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #cbd5f5;
+  background: #020617;
+  transition: max-height 0.35s ease, padding-top 0.25s ease,
+    padding-bottom 0.25s ease;
+}
+
+/* hover 시 스르륵 펼쳐짐 */
+.manual-box:hover .manual-content {
+  max-height: 520px;
+  padding-top: 8px;
+  padding-bottom: 10px;
+}
+
+.manual-box:hover .manual-arrow {
+  transform: rotate(180deg);
+}
+
+.manual-content ol {
+  margin: 8px 0 10px;
+  padding-left: 18px;
+}
+
+.manual-content li {
+  margin-bottom: 6px;
+}
+
+.manual-content p {
+  margin: 4px 0;
+}
+
+/* --------------------------
+   AI 툴 링크 영역
+--------------------------- */
+.tool-links {
+  max-width: 1080px;
+  margin: 2px auto 14px;
+  padding: 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tool-links-label {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.tool-links-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: #020617;
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.1s ease, border-color 0.2s ease;
+}
+
+.tool-btn:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+  border-color: #e5e7eb;
+}
+
+/* --------------------------
+   메인 레이아웃
+--------------------------- */
+.main-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  padding: 14px 16px 16px;
+}
+
+.panel-title {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 13px;
+  color: #cbd5f5;
+}
+
+select {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 13px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #e5e7eb;
+}
+
+.help-text {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 4px 0 0;
+}
+
+/* 버튼 */
+.primary-btn,
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.primary-btn {
+  background: linear-gradient(to right, #6366f1, #0ea5e9);
+  color: #f9fafb;
+  margin-top: 4px;
+}
+
+.primary-btn:hover {
+  filter: brightness(1.05);
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  color: #e5e7eb;
+}
+
+.secondary-btn:hover {
+  background: #020617;
+}
+
+/* --------------------------
+   프롬프트 리스트
+--------------------------- */
+.prompt-section {
+  max-width: 1080px;
+  margin: 20px auto 0;
+  padding: 0 4px;
+}
+
+.prompt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.prompt-header h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.prompt-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.prompt-card {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prompt-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #cbd5f5;
+}
+
+.prompt-card-title {
+  font-weight: 600;
+}
+
+.copy-btn {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: #020617;
+}
+
+.prompt-textarea {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  background: #020617;
+  color: #e5e7eb;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  padding: 6px 8px;
+}
+
+/* --------------------------
+   하단 팁 섹션
+--------------------------- */
+.tips-section {
+  max-width: 1080px;
+  margin: 20px auto 0;
+  padding: 10px 8px 0;
+  border-top: 1px solid rgba(55, 65, 81, 0.8);
+  font-size: 13px;
+  color: #cbd5f5;
+}
+
+.tips-section h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.tips-section ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.tips-section li {
+  margin-bottom: 4px;
+}
+
+/* --------------------------
+   반응형
+--------------------------- */
+@media (max-width: 640px) {
+  .page-root {
+    padding: 10px 8px 32px;
+  }
+
+  .manual-wrapper,
+  .tool-links,
+  .prompt-section,
+  .tips-section {
+    padding: 0 2px;
+  }
+
+  .manual-box {
+    border-radius: 10px;
+  }
+
+  .panel {
+    padding: 12px 12px 14px;
+  }
+
+  .prompt-card {
+    padding: 7px 8px;
+  }
+
+  .prompt-textarea {
+    min-height: 130px;
+  }
+}

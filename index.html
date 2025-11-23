@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>이모티콘 프롬프트 스튜디오 · Emotion Emoticon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page-root">
+      <!-- ✅ 상단 사용설명서 아코디언 -->
+      <section class="manual-wrapper">
+        <div class="manual-box">
+          <div class="manual-header">
+            <span>📘 이모티콘 생성 사용설명서</span>
+            <span class="manual-arrow">▼</span>
+          </div>
+          <div class="manual-content">
+            <p>
+              이 페이지는 <strong>하나의 캐릭터를 고정</strong>해 놓고,<br />
+              <strong>상황별로 다른 9종 이모티콘 프롬프트</strong>를 자동으로 만들어주는
+              도구입니다.
+            </p>
+            <ol>
+              <li>
+                <strong>1단계 – 캐릭터 선택</strong><br />
+                상단의 <strong>대분류 → 소분류 → 세분화</strong> 순서로 고르면<br />
+                AI가 그 캐릭터 한 명(한 마리)을 기준으로
+                <strong>일관된 카카오 스타일 캐릭터</strong>를 만들도록 유도합니다.
+              </li>
+              <li>
+                <strong>2단계 – 상황 카테고리 선택</strong><br />
+                <strong>기본감정 / 직장 / 일상 / 연애 / 계절 / 이벤트 / 리액션</strong> 중 하나를
+                선택하고,<br />
+                상황 소분류에서 원하는 테마를 고르거나
+                <strong>“선택 안함(랜덤)”</strong>을 선택하면<br />
+                해당 카테고리에 맞는 9종 구성이 자동으로 정해집니다.
+              </li>
+              <li>
+                <strong>3단계 – 프롬프트 복사 후 이미지 툴에서 사용</strong><br />
+                생성된 9개의 프롬프트를 필요한 만큼 복사해서<br />
+                아래의 <strong>Google AI Studio · ImageFX · Canva · Figma</strong>에서
+                이미지를 생성합니다.
+              </li>
+            </ol>
+            <p>
+              <strong>Tip.</strong><br />
+              · 말풍선/텍스트는 넣지 말고, 표정과 포즈로만 감정을 표현하는 것이<br />
+              &nbsp;&nbsp;카카오 이모티콘 승인률을 높이는 데 도움이 됩니다.<br />
+              · 배경은 가능하면 단색/흰색 느낌, <strong>투명 배경 PNG</strong>를 추천합니다.<br />
+              · 각 프롬프트는 <strong>카카오톡 이모티콘 제출을 염두에 둔 스타일</strong>로 구성됩니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✅ 사용설명서 아래: 메인 화면에 항상 보이는 링크 버튼 줄 -->
+      <section class="tool-links">
+        <span class="tool-links-label">🎨 AI 이미지 생성 툴 바로가기</span>
+        <div class="tool-links-buttons">
+          <a href="https://aistudio.google.com/" target="_blank" class="tool-btn">
+            Google AI Studio
+          </a>
+          <a
+            href="https://labs.google/fx/tools/image-fx"
+            target="_blank"
+            class="tool-btn"
+          >
+            Google ImageFX
+          </a>
+          <a href="https://www.canva.com/" target="_blank" class="tool-btn">
+            Canva
+          </a>
+          <a href="https://www.figma.com/" target="_blank" class="tool-btn">
+            Figma
+          </a>
+        </div>
+      </section>
+
+      <!-- ✅ 메인 콘텐츠 -->
+      <main class="main-layout">
+        <!-- 🔷 캐릭터 선택 영역 -->
+        <section class="panel">
+          <h2 class="panel-title">1️⃣ 캐릭터 선택</h2>
+          <div class="field-group">
+            <label for="mainCategorySelect">대분류</label>
+            <select id="mainCategorySelect"></select>
+          </div>
+
+          <div class="field-group">
+            <label for="subCategorySelect">소분류</label>
+            <select id="subCategorySelect"></select>
+          </div>
+
+          <div class="field-group">
+            <label for="detailSelect">세분화</label>
+            <select id="detailSelect"></select>
+          </div>
+
+          <p class="help-text">
+            · 세분화에서 구체적인 종/타입을 고르면, 프롬프트에
+            <strong>정확한 캐릭터 이름</strong>이 들어가서<br />
+            AI가 같은 캐릭터를 유지하기가 훨씬 쉬워집니다.<br />
+            · 세분화를 고정해두고, 상황만 바꾸면서 여러 세트를 찍어낼 수 있습니다.
+          </p>
+        </section>
+
+        <!-- 🔷 상황 선택 영역 -->
+        <section class="panel">
+          <h2 class="panel-title">2️⃣ 상황/감정 선택</h2>
+
+          <div class="field-group">
+            <label for="situationCategorySelect">상황 카테고리</label>
+            <select id="situationCategorySelect"></select>
+          </div>
+
+          <div class="field-group">
+            <label for="situationSubSelect">상황 소분류</label>
+            <select id="situationSubSelect"></select>
+            <p class="help-text">
+              · <strong>“선택 안함(랜덤)”</strong>을 고르면, 해당 카테고리 안에서<br />
+              서로 다른 9개의 장면을
+              <strong>중복 없이</strong> 랜덤으로 골라줍니다.
+            </p>
+          </div>
+
+          <button id="generateBtn" class="primary-btn">
+            🎁 이모티콘용 프롬프트 9개 생성하기
+          </button>
+
+          <p class="help-text">
+            · 한 캐릭터를 고정한 상태에서,
+            <strong>표정/포즈 + 상황/컨셉</strong>만 다르게 구성합니다.<br />
+            · 생성 후 각 프롬프트를
+            <strong>이미지 생성 툴에 그대로 붙여 넣으면</strong> 됩니다.
+          </p>
+        </section>
+      </main>
+
+      <!-- 🔷 프롬프트 결과 영역 -->
+      <section class="prompt-section">
+        <div class="prompt-header">
+          <h2>3️⃣ 생성된 이모티콘 프롬프트 9종</h2>
+          <button id="copyAllBtn" class="secondary-btn">
+            📋 전체 프롬프트 한 번에 복사
+          </button>
+        </div>
+        <div id="promptList" class="prompt-list">
+          <!-- JS에서 카드가 동적으로 생성됩니다 -->
+        </div>
+      </section>
+
+      <!-- 🔷 하단 추가 팁 영역 (C안: 카카오 승인 전략 요약) -->
+      <section class="tips-section">
+        <h3>💡 카카오 이모티콘 승인률을 높이기 위한 간단 팁</h3>
+        <ul>
+          <li>
+            <strong>일관된 캐릭터</strong> – 얼굴, 체형, 색감이 세트 내내 거의 같게 유지되도록
+            프롬프트에서<br />
+            캐릭터 설명을 항상 비슷하게 유지해 주세요.
+          </li>
+          <li>
+            <strong>텍스트/말풍선 금지</strong> – 대사, 말풍선, 자막 대신 표정과 포즈로 상황을
+            표현해 주세요.
+          </li>
+          <li>
+            <strong>심플한 라인 + 파스텔톤</strong> – 너무 복잡한 배경보다는 깔끔한 단색/라이트톤이
+            좋습니다.
+          </li>
+          <li>
+            <strong>9~24종 단위 세트</strong> – 9종 세트를 여러 개 만든 뒤, 검수해서 괜찮은 것만
+            모아서<br />
+            24종, 32종 등으로 재구성해 제출해도 좋습니다.
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- ✅ 스크립트 로드 순서 중요 -->
+    <script src="js/data-categories.js"></script>
+    <script src="js/data-situations.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
